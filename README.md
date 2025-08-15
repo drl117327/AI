@@ -10,11 +10,7 @@
 
 ## 任务示例
 硬件：
-
-<video controls width="86%">
-    <source src="./硬件示例视频.mp4" type="video/mp4">
-    您的浏览器不支持视频标签，请直接<a href="./硬件示例视频.mp4">下载视频</a>。
-</video>
+https://github.com/drl117327/AI/blob/main/%E7%A1%AC%E4%BB%B6%E7%A4%BA%E4%BE%8B%E8%A7%86%E9%A2%91.mp4
 
 ## 快速开始
 提供了AI+手机和含有外接硬件的两种方案
