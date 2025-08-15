@@ -1,4 +1,4 @@
-# run_agent_physical.py (MODIFIED FOR REMOTE VOICE INPUT)
+# run_agent_physical.py
 
 import json
 import os
@@ -10,8 +10,10 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import numpy as np
 import cv2
 
-# === MODIFIED VOICE RECOGNIZER (NOW A SERVER) ===
-import socket
+# === MODIFIED VOICE RECOGNIZER  ===
+import sounddevice as sd
+import numpy as np
+import torch
 
 try:
     import whisper
@@ -22,11 +24,20 @@ except ImportError:
     print("请运行: pip install openai-whisper")
     VOICE_ENABLED = False
 
+try:
+    # 检查是否有可用的麦克风
+    sd.query_devices()
+except Exception as e:
+    print(f"WARNING: sounddevice 库无法正常工作: {e}")
+    print("语音输入功能可能不可用。请确保已安装 sounddevice 并且有可用的麦克风。")
+    print("Linux 用户可能需要安装: sudo apt-get install libportaudio2")
+    VOICE_ENABLED = False
+
 
 class VoiceRecognizer:
     def __init__(self, model_size="base"):
         if not VOICE_ENABLED:
-            raise ImportError("语音识别所需库未安装，无法初始化。")
+            raise ImportError("语音识别所需库未安装或麦克风不可用，无法初始化。")
         print(f"  - 正在加载 Whisper 模型 ({model_size})...")
         try:
             self.model = whisper.load_model(model_size)
@@ -36,49 +47,42 @@ class VoiceRecognizer:
             raise
 
     def recognize_speech(self, audio_data):
-        print("  - Whisper 正在识别接收到的语音...")
+        print("  - Whisper 正在识别录制的语音...")
+        # 将音频数据展平为一维数组
+        audio_data = audio_data.flatten().astype(np.float32)
         result = self.model.transcribe(audio_data, fp16=torch.cuda.is_available())
         recognized_text = result["text"].strip()
         print(f"  - 识别结果: '{recognized_text}'")
         return recognized_text
 
-    def get_instruction_from_voice(self, host='0.0.0.0', port=12345):
+    def get_instruction_from_voice(self):
         """
-        启动一个临时服务器，监听并接收来自客户端的单个音频流。
+        直接从默认麦克风录制音频，并进行识别。
         """
+        SAMPLE_RATE = 16000  # Whisper 期望的采样率
+        DURATION = 6  # 录音时长（秒）可以根据需要调整
+
         print("\n--- 语音输入模式 ---")
-        print(f"  - 正在监听端口 {port}，等待客户端发送音频...")
-        print("  - >>> 请现在到您的 Windows 电脑上，运行 voice_client.py 脚本。")
+        input(f"  - >>> 请按 Enter 键开始录音（将录制 {DURATION} 秒）...")
 
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.bind((host, port))
-            s.listen()
-            conn, addr = s.accept()
-            with conn:
-                print(f"  - 客户端 {addr} 已连接。正在接收音频数据...")
-                audio_data_bytes = b""
-                while True:
-                    chunk = conn.recv(4096)
-                    if not chunk:
-                        break
-                    audio_data_bytes += chunk
+        print(f"  - 开始录音，请说话...")
 
-                print("  - 音频数据接收完毕。")
+        # 录制音频
+        audio_data = sd.rec(int(DURATION * SAMPLE_RATE), samplerate=SAMPLE_RATE, channels=1, dtype='float32')
+        sd.wait()  # 等待录音完成
 
-        # 将接收到的字节流转换回 Whisper 需要的格式
-        audio_array = np.frombuffer(audio_data_bytes, dtype=np.float32)
+        print("  - 录音结束。")
 
-        # 调用已有的识别函数
-        instruction = self.recognize_speech(audio_data=audio_array)
+        # 调用识别函数
+        instruction = self.recognize_speech(audio_data=audio_data)
         return instruction
 
 
-# === 语音识别模块修改结束 ===
 
 
 # === PART 1: 全局配置区域 ===
-CAMERA_NGROK_URL = "https://dd5e79560950.ngrok-free.app"
-ROBOT_ARM_NGROK_URL = "https://dd5e79560950.ngrok-free.app"
+CAMERA_NGROK_URL = "https://03f9a4bd524e.ngrok-free.app"
+ROBOT_ARM_NGROK_URL = "https://03f9a4bd524e.ngrok-free.app"
 MODEL_PATH = "model/AgentCPM-GUI"
 NGROK_VIP_HEADERS = {'ngrok-skip-browser-warning': 'true'}
 
