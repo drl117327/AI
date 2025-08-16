@@ -10,7 +10,9 @@
 
 ## 任务示例
 硬件：
-[▶ 播放硬件示例视频](硬件示例视频.mp4)
+<video controls>
+  <source src="https://drl117327.github.io/AI/robot_demonstrate.mp4" type="mp4">
+</video>
 
 ## 快速开始
 提供了AI+手机和含有外接硬件的两种方案
