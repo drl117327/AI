@@ -106,7 +106,7 @@ abs_x, abs_y = [int(rel_x / 1000 * width), int(rel_y / 1000 * height)]
 
 <div style="width: 20%; min-width: 15px; text-align: center;">
   <img src="image/01.png" style="width: 20%; border: 1px solid #ddd; border-radius: 5px;" />
-  <p style="margin-top: 8px; font-size: 14px;">
+  <p style="margin-top: 8px; font-size: 10px;">
     <b>步骤1</b><br>
     "thought": 任务目标是点击联通爱听的后中按钮。当前屏幕显示了多个应用程序图标，找到并点击联通爱听图标以进入应用。<br>
     Action: POINT[397, 464]
@@ -115,7 +115,7 @@ abs_x, abs_y = [int(rel_x / 1000 * width), int(rel_y / 1000 * height)]
 
 <div style="width: 20%; min-width: 15px; text-align: center;">
   <img src="image/02.png" style="width: 20%; border: 1px solid #ddd; border-radius: 5px;" />
-  <p style="margin-top: 8px; font-size: 14px;">
+  <p style="margin-top: 8px; font-size: 10px;">
     <b>步骤2</b><br>
     "thought": 任务目标是点击特定按钮并进行支付。需要 Locate 匹配的按钮位置并进行点击操作以模拟用户行为。<br>
     Action: POINT[859, 928]
@@ -124,7 +124,7 @@ abs_x, abs_y = [int(rel_x / 1000 * width), int(rel_y / 1000 * height)]
 
 <div style="width: 20%; min-width: 15px; text-align: center;">
   <img src="image/03.png" style="width: 20%; border: 1px solid #ddd; border-radius: 5px;" />
-  <p style="margin-top: 8px; font-size: 14px;">
+  <p style="margin-top: 8px; font-size: 10px;">
     <b>步骤3</b><br>
     "thought": 任务目标是在联通爱听平台点击操作并充值1.00元。当前界面是个人中心页面，需要找到并点击充值选项。<br>
     Action: POINYT[827, 726]
@@ -133,7 +133,7 @@ abs_x, abs_y = [int(rel_x / 1000 * width), int(rel_y / 1000 * height)]
 
 <div style="width: 20%; min-width: 15px; text-align: center;">
   <img src="image/04.png" style="width: 20%; border: 1px solid #ddd; border-radius: 5px;" />
-  <p style="margin-top: 8px; font-size: 14px;">
+  <p style="margin-top: 8px; font-size: 10px;">
     <b>步骤4</b><br>
     "thought": 我的目标是完成1.00元的充值任务。当前界面是充值确认界面，点击“立即支付1.00元”按钮完成操作。<br>
     Action: POINT[617, 941]
