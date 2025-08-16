@@ -104,7 +104,7 @@ abs_x, abs_y = [int(rel_x / 1000 * width), int(rel_y / 1000 * height)]
 
 <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: space-between; margin-bottom: 20px;">
 
-<div style="width: 20%; min-width: 150px; text-align: center;">
+<div style="width: 20%; min-width: 15px; text-align: center;">
   <img src="image/01.png" style="width: 20%; border: 1px solid #ddd; border-radius: 5px;" />
   <p style="margin-top: 8px; font-size: 14px;">
     <b>步骤1</b><br>
@@ -113,7 +113,7 @@ abs_x, abs_y = [int(rel_x / 1000 * width), int(rel_y / 1000 * height)]
   </p>
 </div>
 
-<div style="width: 20%; min-width: 150px; text-align: center;">
+<div style="width: 20%; min-width: 15px; text-align: center;">
   <img src="image/02.png" style="width: 20%; border: 1px solid #ddd; border-radius: 5px;" />
   <p style="margin-top: 8px; font-size: 14px;">
     <b>步骤2</b><br>
@@ -122,7 +122,7 @@ abs_x, abs_y = [int(rel_x / 1000 * width), int(rel_y / 1000 * height)]
   </p>
 </div>
 
-<div style="width: 20%; min-width: 150px; text-align: center;">
+<div style="width: 20%; min-width: 15px; text-align: center;">
   <img src="image/03.png" style="width: 20%; border: 1px solid #ddd; border-radius: 5px;" />
   <p style="margin-top: 8px; font-size: 14px;">
     <b>步骤3</b><br>
@@ -131,7 +131,7 @@ abs_x, abs_y = [int(rel_x / 1000 * width), int(rel_y / 1000 * height)]
   </p>
 </div>
 
-<div style="width: 20%; min-width: 150px; text-align: center;">
+<div style="width: 20%; min-width: 15px; text-align: center;">
   <img src="image/04.png" style="width: 20%; border: 1px solid #ddd; border-radius: 5px;" />
   <p style="margin-top: 8px; font-size: 14px;">
     <b>步骤4</b><br>
