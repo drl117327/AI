@@ -11,7 +11,7 @@
 ## 任务示例
 硬件：
 <video controls>
-  <source src="https://drl117327.github.io/AI/robot_demonstrate.mp4" type="mp4">
+  <source src="https://drl117327.github.io/AI/videos/robot_demonstrate.mp4" type="video/mp4">
 </video>
 
 ## 快速开始
