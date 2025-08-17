@@ -9,9 +9,8 @@
 ·添加硬件外设：基于多轴机械臂与ADB控制，实现真实手机操作（如点击、滑动），并通过视觉-运动校准确保动作精度。
 
 ## 任务示例
-硬件：
-https://github.com/drl117327/AI/doce/video/robot_domenstrate.mp4
-
+硬件展示视频：
+https://www.bilibili.com/video/BV1zgYkzHERZ/?spm_id_from=333.1387.homepage.video_card.click&vd_source=d7aaf48e40cffa200e1c723992f7cd60
 ## 快速开始
 提供了AI+手机和含有外接硬件的两种方案
 ### 安装依赖
